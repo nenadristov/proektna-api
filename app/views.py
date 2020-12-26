@@ -26,7 +26,7 @@ def Create_passenger(request):
         if patnik.is_valid :
             patnik.is_valid(raise_exception=True)
             patnik.save()
-           return Response( status=status.HTTP_201_CREATED)
+            return Response( status=status.HTTP_201_CREATED)
         return Response(patnik.data,  status=status.HTTP_400_BAD_REQUEST)
 
 
