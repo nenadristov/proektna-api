@@ -13,17 +13,27 @@ def home(request):
     return None
 
 #Create Passenger
-#Create Flight
 @api_view(["GET", 'POST'])
-def Create_passenger_flight(request):
-    if request.method =='POST':
+def Create_passenger(request):
+     if request.method =='POST':
         data_patnik = {
             'First_Name': request.data.get("First_Name"),
             'Last_Name': request.data.get("Last_Name"),
             "Birth": request.data.get("Birth"),
             'Passport_Number': request.data.get("Passport_Number")
         }
+        patnik = PassengersSerializer(data = data_patnik)
+        if patnik.is_valid :
+            patnik.is_valid(raise_exception=True)
+            patnik.save()
+           return Response( status=status.HTTP_201_CREATED)
+        return Response(patnik.data,  status=status.HTTP_400_BAD_REQUEST)
 
+
+#Create Flight
+@api_view(["GET", 'POST'])
+def Create_passenger_flight(request):
+    if request.method =='POST':
         data_let = {
             "Flight_Number": request.data.get("Flight_Number"),
             "Departure": request.data.get("Departure"),
@@ -35,18 +45,12 @@ def Create_passenger_flight(request):
             "CheckIn": request.data.get("CheckIn"),
             "PassangerId": request.data.get("PassangerId")
         }
-
-        patnik = PassengersSerializer(data = data_patnik)
         let = FlightsSerializer(data = data_let)
-
-        if patnik.is_valid and let.is_valid:
-            patnik.is_valid(raise_exception=True)
+        if let.is_valid:
             let.is_valid(raise_exception=True)
             let.save()
-            patnik.save()
-           
             return Response( status=status.HTTP_201_CREATED)
-        return Response(patnik.data,  status=status.HTTP_400_BAD_REQUEST)
+        return Response(let.data,  status=status.HTTP_400_BAD_REQUEST)
 
 
 #Get  all Passengers
