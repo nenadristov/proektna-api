@@ -76,7 +76,7 @@ def get_all_flights(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def get_passenger_by_id(request, pk):
     try:
-        passenger = Passengers.objects.get(pk = pk)
+        passenger = Passengers.objects.filter(pk = pk)
     except Passengers.DoesNotExist:
         return Response({"message": "The flight does not exist"})
     if request.method == 'GET':
@@ -111,7 +111,7 @@ def get_passenger_by_id(request, pk):
 @api_view(['GET', 'PUT', 'DELETE'])
 def get_flights_by_id(request, pk):
     try:
-        flight = Flights.objects.get(pk = pk)
+        flight = Flights.objects.filter(pk = pk)
     except Flights.DoesNotExist:
         return Response({"message": "The flight does not exist"})
     if request.method == 'GET':

@@ -7,7 +7,7 @@ class Passengers(models.Model):
     First_Name = models.CharField(max_length= 20)
     Last_Name = models.CharField(max_length=20)
     Birth = models.DateField()
-    Passport_Number = models.CharField(max_length=8)
+    Passport_Number = models.CharField(max_length=8, unique=True)
 
 class Flights(models.Model):
     
