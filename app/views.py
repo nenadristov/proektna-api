@@ -32,7 +32,7 @@ def Create_passenger(request):
 
 #Create Flight
 @api_view(["GET", 'POST'])
-def Create_passenger_flight(request):
+def Create_flight(request):
     if request.method =='POST':
         data_let = {
             "Flight_Number": request.data.get("Flight_Number"),
