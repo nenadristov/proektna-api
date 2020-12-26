@@ -10,7 +10,7 @@ from .serializers import PassengersSerializer, FlightsSerializer
 # Create your views here.
 
 def home(request):
-    return Http404
+    return None
 
 #Create Passenger
 #Create Flight

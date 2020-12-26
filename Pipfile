@@ -12,6 +12,7 @@ install = "*"
 dj-database-url = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-heroku = "*"
 
 [dev-packages]
 
