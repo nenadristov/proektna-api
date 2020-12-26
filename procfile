@@ -1,3 +1,0 @@
-
-
-web: gunicorn Proektna.wsgi --log-file -
